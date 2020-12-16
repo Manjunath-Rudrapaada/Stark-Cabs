@@ -1,0 +1,159 @@
+<!-- Account Sign Up/Sign In -->
+<div id="account">
+  <div class="container">
+    <h1 class="section-heading">Sign Up/Sign In</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Create your account</h3>
+        <form class="form" id="form1" (ngSubmit)="onSignUp()" #f1="ngForm">
+          <div ngModelGroup="signUpData">
+          <div class="form-group row">
+            <label for="fName" class="col-sm-2 col-form-label">Firstname</label>
+            <div class="col-sm-10">
+              <input name="firstname" type="text" class="form-control" id="fName"
+              placeholder="Enter your Firstname" ngModel required #fname="ngModel">
+              <span class="help-block" *ngIf="!fname.valid && fname.touched">Firstname cannot be EMPTY!!!</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="lName" class="col-sm-2 col-form-label">Lastname</label>
+            <div class="col-sm-10">
+              <input name="lastname" type="text" class="form-control" id="lName"
+                placeholder="Enter your Lastname" ngModel required #lname="ngModel">
+                <span class="help-block" *ngIf="!lname.valid && lname.touched">Lastname cannot be EMPTY!!!</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+              <input name="number" type="text" class="form-control" id="phone"
+                placeholder="Enter your Phone Number (Optional)" ngModel #phone="ngModel">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="emailId" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input name="email" type="email" class="form-control" id="emailId"
+                placeholder="Enter your Email address" ngModel required #emailId="ngModel">
+                <span class="help-block" *ngIf="!emailId.valid && emailId.touched">Please enter a valid Email address!!!</span>
+            </div>
+          </div>
+          <div>
+</div>
+          <div class="form-group row">
+            <label for="inputPass" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input name="password" type="password" class="form-control" id="inputPass"
+                placeholder="Enter a Password" ngModel required #passInp="ngModel">
+                <span class="help-block" *ngIf="!passInp.valid && passInp.touched">Password cannot be EMPTY!!!</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="confirmPass" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input name="confirmPassword" type="password" class="form-control" id="confirmPass"
+                placeholder="Confirm Password" ngModel required #cnfPass="ngModel">
+                <span class="help-block" *ngIf="!cnfPass.valid && cnfPass.touched && passInp!=cnfPass">Password and Confirm Password doesn't match!!!</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="knowUs" class="col-form-label col-sm-12">How you got to know about STARK CABS?</label>
+            <div class="col-sm-12">
+            <select name="knowUs" class="form-control" [ngModel]="defaultKnow">
+              <option value="online">Through an online advertisement</option>
+              <option value="friend">Through a friend</option>
+              <option value="others">Others</option>
+            </select>
+          </div>
+          </div>
+
+          <!-- <div class="form-group row">
+            <label for="" class="col-sm-4 col-form-label">Password Hint</label>
+            <div class="col-sm-8">
+            <textarea name="passhint" rows="1" class="form-control" [(ngModel)]="hint"></textarea>
+          </div>
+          </div>
+          <div  class="form-group row">
+          <span class="col-sm-12">Hint : {{ hint }}</span>
+        </div> -->
+
+          <div class="form-group row">
+            <!-- <div class="col-sm-2">Checkbox</div> -->
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1" ngModel required>
+                <label class="form-check-label" for="gridCheck1">
+                  Terms and Conditions
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary col-sm-12" id="signup">Sign Up</button>
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h3>Sign In</h3>
+        <form class="form" id="form2" (ngSubmit)="onSignIn()" #f2="ngForm">
+          <div ngModelGroup="signInData">
+          <div class="form-group row">
+            <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label> -->
+            <div class="col-sm-12">
+              <input type="email" class="form-control"
+                placeholder="Enter your email or phone number" ngModel name="email" required #email="ngModel">
+                <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid Email or Phone  number!!!</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <!-- <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label> -->
+            <div class="col-sm-12">
+              <input type="password" class="form-control"
+                placeholder="Enter your password" ngModel name="password" required #password="ngModel" #pwd>
+                <div>
+                <span class="help-block" *ngIf="!password.valid && password.touched; else strongPwd">Password cannot be EMPTY!!!</span>
+                <ng-template #strongPwd>
+                <span class="help-block" *ngIf="password.touched && onSigningIn(pwd)">Password must contain atleast 8 characters!!!</span>
+              </ng-template>
+              </div>  
+                <!-- <div [ngSwitch]="password">
+                  <span class="help-block" *ngSwitchCase="'!password.valid && password.touched'">Password cannot be
+                    EMPTY!!!</span>
+                  <span class="help-block" *ngSwitchCase="'password.touched && onSigningIn(pwd)'">Password must contain minimum of
+                    8 characters!!!</span>
+                </div> -->
+            </div>
+          </div>
+          <div class="form-group row">
+            <!-- <div class="col-sm-2">Checkbox</div> -->
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck2" checked>
+                <label class="form-check-label" for="gridCheck2">
+                  Remember Me
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary col-sm-12" id="signin" [disabled]="!f2.valid && onSigningIn(pwd)" (click)="onSigningIn(pwd)">Sign in</button>
+            </div>
+          </div>
+          <a [routerLink]="['/account']">Forgot Password?</a>
+        </div>
+        </form>
+        <div class="row" *ngIf="signIn">
+          <div class="col-sm-12">
+            <h3>Email Address : {{ user.email }} </h3>
+            <h3>Password : {{ user.password }} </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+

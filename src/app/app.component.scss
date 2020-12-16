@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Yanone+Kaffeesatz:wght@600&display=swap');
+
+.yanone{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.arvo {
+    font-family: 'Arvo', serif;
+}
+
+/* Navigation bar custom style */
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 20px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: orangered;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: orangered;
+}
