@@ -213,3 +213,9 @@ footer {
   #ads2 a {
       text-decoration: underline;
   }
+
+@media (max-width:1028px) {
+    .section-heading {
+        font-size: 48px;
+    }
+}
